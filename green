@@ -1,6 +1,6 @@
 #!/usr/bin/env bb
-;; Redis launcher — one Redis 7.2 server on one Vultr instance, published on
-;; loopback and the VPC address only, reached over an SSH tunnel, with RDB
+;; Redis launcher — one Redis 7.2 server on one Vultr instance or DigitalOcean
+;; droplet, published on loopback only, reached over an SSH tunnel, with RDB
 ;; backup sets in Cloudflare R2.
 ;;
 ;; Desired state lives in colors.yml. Secrets are supplied only through
@@ -23,7 +23,7 @@
 
 ;; Managed by `bb pin` — do not edit by hand. An initial nil is intentional:
 ;; the repository must be committed and pushed before a real SHA can be stamped.
-(def ^:private redis-sha "56120758a11bdc0f22d5b2891d6ee66d877d4e74")
+(def ^:private redis-sha "537858307ee85f90b28813a272f0d26b9b4b07a8")
 
 (def ^:private redis-git-url "https://github.com/getcolors/redis.git")
 (def ^:private green-git-url "https://github.com/getcolors/green.git")

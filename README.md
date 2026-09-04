@@ -4,8 +4,8 @@ Desired state for one [Redis](https://redis.io) 7.2 server on one Vultr
 instance in Amsterdam, using the
 [`redis`](https://github.com/getcolors/redis) Package Skill: one Docker
 Compose service with `noeviction` and an append-only file, published on
-loopback and the VPC address only, reached over an SSH tunnel, with RDB
-backup sets in Cloudflare R2 and a rehearsed restore.
+loopback only, reached over an SSH tunnel, with RDB backup sets in
+Cloudflare R2 and a rehearsed restore.
 
 This repository holds `colors.yml`, the installed launcher, `.envrc`, and
 `devenv.nix`. Everything else is generated (`.colors/`) or secret
@@ -55,5 +55,5 @@ is the one pair that reaches the host.
 COLORS_PAR_COMPUTE_PREVENT_DESTROY=false ./green delete
 ```
 
-Removes the machine, the firewall group, the VPC, the SSH config block and
-the machine keypair. Removes nothing in R2.
+Removes the machine, the firewall group, the SSH config block and the
+machine keypair. Removes nothing in R2.

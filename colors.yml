@@ -15,9 +15,9 @@
 #                    onto these names, so .envrc.private can carry either)
 #
 # There is no DNS provider and no public Redis port: Redis is published on
-# loopback and the VPC address only, the firewall opens 22 alone, and the
-# client path is an SSH tunnel (ssh -L 6379:127.0.0.1:6379 redis-vultr). The
-# password is generated on the server during convergence (create-once at
+# loopback only, the firewall opens 22 alone, and the client path is an SSH
+# tunnel (ssh -L 6379:127.0.0.1:6379 redis-vultr). The password is generated
+# on the server during convergence (create-once at
 # /etc/redis/secrets/password) and is never operator-supplied.
 
 profile: redis-vultr
@@ -58,19 +58,13 @@ redis-backup-max-age-hours: 8
 
 # --- Vultr --------------------------------------------------------------------
 
-# No vultr-name: per workspace standards/compute-name.md the machine, its
-# firewall group and its VPC are named after the profile: redis-vultr.
+# No vultr-name: per workspace standards/compute-name.md the machine and its
+# firewall group are named after the profile: redis-vultr.
 vultr-region: ams
 # 1 vCPU / 2 GiB: Redis is single-threaded and this is a cache/queue tier.
 vultr-plan: vc2-1c-2gb
 # Vultr operating systems are numeric ids; 2284 is Ubuntu 24.04 LTS x64.
 vultr-os-id: 2284
-# The private network Redis is published on beside loopback. Nothing else is
-# on it yet; a future peer needs a firewall rule for its /32 as well, because
-# a Vultr firewall group filters the private interface too. 10.60 so it can
-# never be confused with langfuse-vultr's 10.50.
-vultr-vpc-subnet: 10.60.0.0/24
-
 # No vultr-ssh-keys: keygen mode per workspace standards/ssh-keypair.md. The
 # package generates and owns ~/.ssh/redis-vultr and registers the account key
 # resource named after the profile. Setting vultr-ssh-keys here would switch

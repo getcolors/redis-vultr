@@ -13,9 +13,9 @@ Skill launcher.
 ## Things specific to this deployment
 
 - **One machine, one service.** `redis-vultr` in Amsterdam (`vc2-1c-2gb`,
-  Ubuntu 24.04) in its own VPC (`10.60.0.0/24`), running Redis 7.2 published
-  on loopback and the VPC address only. The firewall opens 22 alone; `ssh
-  redis-vultr` reaches it through the block the package wrote.
+  Ubuntu 24.04), running Redis 7.2 published on loopback only; the package
+  attaches no VPC. The firewall opens 22 alone; `ssh redis-vultr` reaches it
+  through the block the package wrote.
 - **The client path is a tunnel**: `ssh -L 6379:127.0.0.1:6379 redis-vultr`,
   then `redis-cli -p 6379` with the password read over SSH from
   `/etc/redis/secrets/password`. There is no DNS record and no public port.
