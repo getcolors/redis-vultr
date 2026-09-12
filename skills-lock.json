@@ -5,7 +5,7 @@
       "source": "getcolors/redis",
       "sourceType": "github",
       "skillPath": "skills/package-redis-green/SKILL.md",
-      "computedHash": "41cf9e9b2917f7f2b51ad526cacb27668992a12c8cbc6a68938d329c9217926a"
+      "computedHash": "9454ed9f941043b36dca9493806cc07536d03b20ecb954c41969ddf79add9f45"
     }
   }
 }
